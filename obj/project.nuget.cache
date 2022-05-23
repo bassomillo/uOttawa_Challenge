@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "FNtdHNU9IRj2+sNLriqXOuslJoZRXSMeiFmRnD2CJWK1s5IJ4wyH/xI9JrmD6zOX18RNRjhhDq4PqfQlU2vqmQ==",
+  "success": true,
+  "projectFilePath": "D:\\uOttawa_Challenge\\Wordle\\Wordle.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bassomillo\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\bassomillo\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\bassomillo\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\bassomillo\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\bassomillo\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\bassomillo\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
