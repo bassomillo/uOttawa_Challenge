@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\uOttawa_Challenge\\Wordle\\Wordle.csproj": {}
+    "D:\\uOttawa_Challenge\\Wordle.csproj": {}
   },
   "projects": {
-    "D:\\uOttawa_Challenge\\Wordle\\Wordle.csproj": {
+    "D:\\uOttawa_Challenge\\Wordle.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\uOttawa_Challenge\\Wordle\\Wordle.csproj",
+        "projectUniqueName": "D:\\uOttawa_Challenge\\Wordle.csproj",
         "projectName": "Wordle",
-        "projectPath": "D:\\uOttawa_Challenge\\Wordle\\Wordle.csproj",
+        "projectPath": "D:\\uOttawa_Challenge\\Wordle.csproj",
         "packagesPath": "C:\\Users\\bassomillo\\.nuget\\packages\\",
-        "outputPath": "D:\\uOttawa_Challenge\\Wordle\\obj\\",
+        "outputPath": "D:\\uOttawa_Challenge\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,6 +44,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.15.1, )"
+            },
+            "NetSpell": {
+              "target": "Package",
+              "version": "[2.1.7, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
