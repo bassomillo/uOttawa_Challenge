@@ -16,14 +16,14 @@ public class WordleController : ControllerBase
     }
 
     /// <summary>
-    /// View all the inventories
+    /// Check the guess history by key
     /// </summary>
     [HttpGet("checkHistory")]
-    public async Task<List<History>> Get() =>
-        await _wordleService.GetAsync();
+    public async Task<List<History>> CheckHistory(string key) =>
+        await _wordleService.CheckHistory(key);
 
     /// <summary>
-    /// View a specific inventory by ID 
+    /// Get a key
     /// </summary>
     [HttpGet("getKey")]
     public async Task<ActionResult<string>> GetKey()
@@ -33,14 +33,13 @@ public class WordleController : ControllerBase
     }
 
     /// <summary>
-    /// Create a new inventory, donot input the product_id value, just delete the first line when you try this API
+    /// Input the Key and guess word and return the result
     /// </summary>
     [HttpPost("guess")]
-    public async Task<ActionResult<string>> Post(string guess)
+    public async Task<ActionResult<string>> Guess(Guess guess)
     {
-       string answer =  await _wordleService.Guess(guess);
-
-        return answer;
+       return  await _wordleService.Guess(guess);
+        
     }
 
     

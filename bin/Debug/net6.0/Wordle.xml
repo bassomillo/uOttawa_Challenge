@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wordle</name>
+    </assembly>
+    <members>
+        <member name="M:WordleBackEndApi.Controllers.WordleController.CheckHistory(System.String)">
+            <summary>
+            Check the guess history by key
+            </summary>
+        </member>
+        <member name="M:WordleBackEndApi.Controllers.WordleController.GetKey">
+            <summary>
+            Get a key
+            </summary>
+        </member>
+        <member name="M:WordleBackEndApi.Controllers.WordleController.Guess(WordleBackEndApi.Models.Guess)">
+            <summary>
+            Input the Key and guess word and return the result
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,11 +1,29 @@
+using Microsoft.OpenApi.Models;
+using WordleBackEndApi.Models;
+using WordleBackEndApi.Services;
+using System;
+using System.Reflection;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.Configure<WordleDataBaseSettings>(
+    builder.Configuration.GetSection("WordleDataBase"));
+builder.Services.AddSingleton<WordleService>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "uOttawa Wordle Challenge BackEnd API",
+        Description = "An ASP.NET Core Web API with MongoDB"
+    });
+    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+});
 
 var app = builder.Build();
 

@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
@@ -30,7 +33,7 @@ public class WordleService
     public async Task<ActionResult<string>> GetKey()
     {
         Random random = new Random();
-        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        const string chars = "abcdefghijklmnopqrstuvwxyz";
         string word = new string(Enumerable.Repeat(chars, 5).Select(s => s[random.Next(s.Length)]).ToArray());
         List<Word> findWord = await _wordCollection.Find(x => x.word == word).ToListAsync();
         if (findWord.Any())
@@ -52,19 +55,37 @@ public class WordleService
     }
 
 
+    public async Task<string> Guess(Guess guessWord){
+        string key = guessWord.key;
+        string guess = guessWord.guess;
+        History history =  new History(); 
+        Word word = await _wordCollection.Find(x => x.key == key).FirstOrDefaultAsync();
+        string answer = word.word;
+         history.key = key;
+        history.date = DateTime.Now.ToString();
+        history.word = answer;
+        history.guess = guess;
+        await _historyCollection.InsertOneAsync(history);
+        char[] guessList = guess.ToCharArray();
+        char[] answerList = answer.ToCharArray();
+        Hashtable answerTable = new Hashtable();
+        for(int i = 0; i<answerList.Length; i++){
+            answerTable.Add(answerList[i], i);
+        }
+        List<string> result = new List<string>();
+        for(int i = 0; i<answerList.Length; i++){
+            if(answerList[i] == guessList[i]){
+                result.Add("y");
+            }else if(answerTable.ContainsKey(guessList[i])){
+                result.Add("m");
+            }else{
+                result.Add("n");
+            }
+        }
+        return string.Join(",", result);
 
-    public async Task<List<Inventory>> GetAsync() =>
-        await _inventoryCollection.Find(_ => true).ToListAsync();
+}
+       public async Task<List<History>> CheckHistory(string key) =>
+        await _historyCollection.Find(x => x.key == key).ToListAsync();
 
-    public async Task<Inventory?> GetAsync(string id) =>
-        await _inventoryCollection.Find(x => x.product_id == id).FirstOrDefaultAsync();
-
-    public async Task CreateAsync(Inventory newInventory) =>
-        await _inventoryCollection.InsertOneAsync(newInventory);
-
-    public async Task UpdateAsync(string id, Inventory updatedInventory) =>
-        await _inventoryCollection.ReplaceOneAsync(x => x.product_id == id, updatedInventory);
-
-    public async Task RemoveAsync(string id) =>
-        await _inventoryCollection.DeleteOneAsync(x => x.product_id == id);
 }
